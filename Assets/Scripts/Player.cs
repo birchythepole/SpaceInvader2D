@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    [SerializeField] [Range(1, 30)] float moveSpeedHorizontal = 10f;
-    [SerializeField] [Range(1, 30)] float moveSpeedVertical = 6f;
+    [SerializeField] [Range(1, 30)] float moveSpeed = 10f;
+
+    float xMin;
+    float xMax;
+    float yMin;
+    float yMax;
     // Use this for initialization
     void Start () {
-		
+        SetUpMoveBounderies();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
         Move();
 	}
     /*Dela.time jest funkcja, ktora powoduje iz poruszanie sie obiektu w Unity jest
@@ -26,12 +29,26 @@ public class Player : MonoBehaviour {
          */
     private void Move()
     {
-        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeedHorizontal; // Zmienna pobierajaca os pozioma z Unity, i zmiana jaka robimy
-        var newXPos = transform.position.x + deltaX; // Zmienna przechowujaca wartosc o jaka zmieniamy polozenie gracza, polozenie plus zmiana polozenia
+        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;// Zmienna pobierajaca os pozioma z Unity, i zmiana jaka robimy
+
+        
+        var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax); // Zmienna przechowujaca wartosc o jaka zmieniamy polozenie gracza, polozenie plus zmiana polozenia
+        var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
+
         transform.position = new Vector2(newXPos, transform.position.y); //formula ktora przesowa gracza (przesowa jego os Y) o wartosc newXPos, zmienia polozenie i mowi zostan tu, w osi Y
-        /* Ruch w pionie */
-        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeedVertical;
-        var newYPos = transform.position.y + deltaY;
         transform.position = new Vector2(newXPos, newYPos);// << ważne nie dajemy kolejnego transforma, tylko nowa pozycje Y!!!
+    }
+    private void SetUpMoveBounderies()
+    {
+        /*Metoda która pobiera do zmienej kamere głowna gry, nastepnie przypisuje do zmiennych 
+         xMin oraz xMax, kolejno wartosc krawedzi pola kamery, potrzebujemy tego aby miec
+         zdefiniowany obszar poruszania sie gracza. Dzieki temu nawet jak zmienimy 
+         rozdzielczosc kamery obszar poruszania sie graczza bedzie responsywny*/
+        Camera gameCamera = Camera.main;
+        xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
+        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
+        yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
+        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
     }
 }
