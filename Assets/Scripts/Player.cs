@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    [SerializeField] [Range(1, 30)] float moveSpeed = 10f;
-	// Use this for initialization
-	void Start () {
+    [SerializeField] [Range(1, 30)] float moveSpeedHorizontal = 10f;
+    [SerializeField] [Range(1, 30)] float moveSpeedVertical = 6f;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -25,8 +26,12 @@ public class Player : MonoBehaviour {
          */
     private void Move()
     {
-        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed; // Zmienna pobierajaca os pozioma z Unity, i zmiana jaka robimy
+        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeedHorizontal; // Zmienna pobierajaca os pozioma z Unity, i zmiana jaka robimy
         var newXPos = transform.position.x + deltaX; // Zmienna przechowujaca wartosc o jaka zmieniamy polozenie gracza, polozenie plus zmiana polozenia
         transform.position = new Vector2(newXPos, transform.position.y); //formula ktora przesowa gracza (przesowa jego os Y) o wartosc newXPos, zmienia polozenie i mowi zostan tu, w osi Y
+        /* Ruch w pionie */
+        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeedVertical;
+        var newYPos = transform.position.y + deltaY;
+        transform.position = new Vector2(newXPos, newYPos);// << ważne nie dajemy kolejnego transforma, tylko nowa pozycje Y!!!
     }
 }
