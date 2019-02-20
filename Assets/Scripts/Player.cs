@@ -4,8 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    //Parametry konfiguracyjne
     [SerializeField] [Range(1, 30)] float moveSpeed = 10f;
     [SerializeField] float padding = 0.5f;
+    //Tworzy zmienna typu obiekt 
+    [SerializeField] GameObject laserPrefab;  
+    [SerializeField] [Range(1, 50)] float projectileSpeed = 15f;
+
 
     float xMin;
     float xMax;
@@ -18,6 +23,7 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         Move();
+        Fire();
 	}
     /*Dela.time jest funkcja, ktora powoduje iz poruszanie sie obiektu w Unity jest
      niezalezne od ilosci klatek (frame rate independent), jest to bardzo potrzebna
@@ -51,5 +57,17 @@ public class Player : MonoBehaviour {
         xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x-padding;
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y+padding;
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y-padding;
+    }
+    private void Fire()
+    {
+        /*Gdy wciśniemy klawsize przypisane do Fire1 wtedy nasz If tworzy zmienna typu obiekt
+         i instancjonuje ja jako klon prefabrykanta, nastepnie pobirana jest do stworzonego 
+         klona wartosc velocity z komponentu Rigidbody2D i zmienina o Vektor od zera do zdefiniowanej
+         predkosci pocisku*/
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+        }
     }
 }
