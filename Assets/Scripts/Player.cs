@@ -10,7 +10,8 @@ public class Player : MonoBehaviour {
     //Tworzy zmienna typu obiekt 
     [SerializeField] GameObject laserPrefab;  
     [SerializeField] [Range(1, 50)] float projectileSpeed = 15f;
-
+    [SerializeField] [Range(0, 10)] float projectileFiringPeriod = 0.7f;
+    Coroutine firingCoroutine;
 
     float xMin;
     float xMax;
@@ -32,8 +33,7 @@ public class Player : MonoBehaviour {
      pojedynczej klatki, i jezeli pomnozmy to przez nasza wartosc, za kazdym razem
      otrzymamy taka sama predkosc niezaleznie od liczby klatek
      FPS 10, Duration of frame 0.1s, Distance per second, 1 x 10 x 0.1 = 1 
-     FPS 100, Duration of frame 0.01s, Distance per second, 1 x 10 x 0.01 = 1 
-         */
+     FPS 100, Duration of frame 0.01s, Distance per second, 1 x 10 x 0.01 = 1*/
     private void Move()
     {
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
@@ -63,11 +63,23 @@ public class Player : MonoBehaviour {
         /*Gdy wciśniemy klawsize przypisane do Fire1 wtedy nasz If tworzy zmienna typu obiekt
          i instancjonuje ja jako klon prefabrykanta, nastepnie pobirana jest do stworzonego 
          klona wartosc velocity z komponentu Rigidbody2D i zmienina o Vektor od zera do zdefiniowanej
-         predkosci pocisku*/
+         predkosci pocisku, jednoczesnie aktywowona jest korutyna ktora powoduje wystrzeliwanie pociskow
+         co zdefiniowana ilosc czasu, oraz zatrzymanie korutyny w przypadku puszczenia klawisza*/
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            firingCoroutine = StartCoroutine(FireContinuously());
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            StopCoroutine(firingCoroutine);
+        }
+    }
+    IEnumerator FireContinuously()
+    {
+        while (true) { 
+        GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
+        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+        yield return new WaitForSeconds(projectileFiringPeriod);
         }
     }
 }
