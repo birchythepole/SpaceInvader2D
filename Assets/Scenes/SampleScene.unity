@@ -524,6 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  padding: 0.5
 --- !u!212 &2124861773
 SpriteRenderer:
   m_ObjectHideFlags: 0
