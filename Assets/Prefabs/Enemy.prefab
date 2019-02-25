@@ -52,7 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c6914982f930244bed2256bf5537ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
+  waypoints:
+  - {fileID: 4916329781862874, guid: 97d16be54ca70424f8f2f51b08945389, type: 2}
+  - {fileID: 4908325809761204, guid: 97d16be54ca70424f8f2f51b08945389, type: 2}
+  - {fileID: 4095865087786792, guid: 97d16be54ca70424f8f2f51b08945389, type: 2}
 --- !u!212 &212956322020126766
 SpriteRenderer:
   m_ObjectHideFlags: 1
