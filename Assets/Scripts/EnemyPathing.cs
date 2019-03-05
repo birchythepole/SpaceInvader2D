@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour {
-
+    /*Tworzymy zmienna typu WaveConfig przechowująca tenże plik*/
+    [SerializeField] WaveConfig waveConfig;
     /*Lista stworzona do przechowywania waypointow z poziomy edytora*/
-    [SerializeField]  List<Transform> waypoints;
+    List<Transform> waypoints;
     [SerializeField] [Range(0, 10)] float moveSpeed = 2f; // Deklarowana prędkość przeciwnika
 
     int waypointIndex = 0;
 	// Use this for initialization
 	void Start () {
+        waypoints = waveConfig.GetPathWaypoints();
         // ustawienie poczatkowej pozycji przeciwnika na pozycje pierwszego waypointa
         transform.position = waypoints[waypointIndex].transform.position;
 		
