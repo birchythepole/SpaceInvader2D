@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour {
     /*Tworzymy zmienna typu WaveConfig przechowująca tenże plik*/
-    [SerializeField] WaveConfig waveConfig;
+    WaveConfig waveConfig;
     /*Lista stworzona do przechowywania waypointow z poziomy edytora*/
     List<Transform> waypoints;
-    [SerializeField] [Range(0, 10)] float moveSpeed = 2f; // Deklarowana prędkość przeciwnika
 
     int waypointIndex = 0;
 	// Use this for initialization
@@ -17,7 +16,10 @@ public class EnemyPathing : MonoBehaviour {
         transform.position = waypoints[waypointIndex].transform.position;
 		
 	}
-	
+	public void SetWaveConfig(WaveConfig waveConfig)
+    {
+        this.waveConfig = waveConfig;
+    }
 	// Update is called once per frame
 	void Update ()
     {
@@ -38,7 +40,7 @@ public class EnemyPathing : MonoBehaviour {
             /*Deklarujemy zmienna ktora bedzie pzechowywac wartosc predkosci przeciwnika 
              pomnożoną przez funkcje Time.delta time tak aby prędkość obiektu była
              framerate independent*/
-            var movementThisFrame = moveSpeed * Time.deltaTime;
+            var movementThisFrame = waveConfig.GetMoveSpeed() * Time.deltaTime;
             /* W aktualnej pozycj obiektu wywołujemy funkcje MoveTowards w Vector2 tak aby 
              * obiekt poruszał sie w kierunku nastpnego waypointa, jako paametry podajemy
              * aktualna pozycje, pozycje celu oraz predkosc przeciwnika */
