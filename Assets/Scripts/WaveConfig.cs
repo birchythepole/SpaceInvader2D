@@ -11,7 +11,7 @@ public class WaveConfig : ScriptableObject {
      publiczne zwracające poszczególne wartości tak aby inne skrypty mogły z nich skorzystać*/
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] GameObject pathPrefab;
-    [SerializeField][Range (0,10)] float timeBetweenSpawns = 0.5f;
+    [SerializeField][Range(0, 10)] float timeBetweenSpawns = 0.3f;
     [SerializeField][Range(0, 10)] float spawnRandomFactor = 0.3f;
     [SerializeField][Range(0, 10)] float moveSpeed = 2f;
     [SerializeField][Range(0, 10)] int numberOfEnemies = 5;
