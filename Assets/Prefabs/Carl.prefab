@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4183294323994984}
   - component: {fileID: 212915375779223984}
   - component: {fileID: 114153965341267660}
+  - component: {fileID: 114668659994665974}
   m_Layer: 0
   m_Name: Carl
   m_TagString: Untagged
@@ -52,6 +53,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c6914982f930244bed2256bf5537ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114668659994665974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1904080936128006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc16f172fb37b54e8a9c977cfbb5fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!212 &212915375779223984
 SpriteRenderer:
   m_ObjectHideFlags: 1

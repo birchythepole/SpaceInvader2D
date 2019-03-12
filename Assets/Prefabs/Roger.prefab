@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4035655492132974}
   - component: {fileID: 212956322020126766}
   - component: {fileID: 114041150051047646}
+  - component: {fileID: 114329140186406752}
+  - component: {fileID: 58112970870673164}
   m_Layer: 0
   m_Name: Roger
   m_TagString: Untagged
@@ -35,12 +37,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609801753594320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.29, z: 0}
+  m_LocalPosition: {x: -0.01118356, y: -7.3741236, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58112970870673164
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609801753594320}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.05417514}
+  serializedVersion: 2
+  m_Radius: 0.307328
 --- !u!114 &114041150051047646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,6 +69,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c6914982f930244bed2256bf5537ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114329140186406752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609801753594320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc16f172fb37b54e8a9c977cfbb5fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!212 &212956322020126766
 SpriteRenderer:
   m_ObjectHideFlags: 1
