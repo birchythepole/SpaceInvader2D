@@ -5,14 +5,43 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     [SerializeField] float health = 300;
-	// Use this for initialization
-	void Start () {
-		
+    [SerializeField] float shotCounter;
+    [SerializeField] float minTimeBetweenShots = 0.2f;
+    [SerializeField] float maxTimeBetweenShots = 3f;
+    [SerializeField] GameObject projectile;
+    [SerializeField] [Range(1, 100)] float projectileSpeed = 12f;
+    // Use this for initialization
+    void Start () {
+        shotCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        CountDownAndShot();
+    }
+        
+
+    private void CountDownAndShot()
+    {
+        shotCounter -= Time.deltaTime;
+        if (shotCounter <= 0)
+        {
+            Fire();
+                shotCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+            
+        }
+    }
+
+    private void Fire()
+    {
+        GameObject laser = Instantiate(
+            projectile,
+            transform.position,
+            Quaternion.identity
+            ) as GameObject;
+        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
