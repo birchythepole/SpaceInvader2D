@@ -15,6 +15,9 @@ public class Player : MonoBehaviour {
     [SerializeField] [Range(1, 50)] float projectileSpeed = 25f;
     [SerializeField] [Range(0, 10)] float projectileFiringPeriod = 0.7f;
     Coroutine firingCoroutine;
+    [Header ("Explosion")]
+    [SerializeField] GameObject deathVFX;
+    [SerializeField] float durationOfExplosion = 1f;
 
     float xMin;
     float xMax;
@@ -98,7 +101,14 @@ public class Player : MonoBehaviour {
         damageDealer.Hit();
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+        GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+        Destroy(explosion, durationOfExplosion);
     }
 }
