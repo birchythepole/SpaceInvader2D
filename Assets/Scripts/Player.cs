@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     //Parametry konfiguracyjne
+    [Header ("Player")]
     [SerializeField] [Range(1, 30)] float moveSpeed = 10f;
     [SerializeField] float padding = 0.5f;
+    [SerializeField] [Range(0, 5000)] int health = 500;
     //Tworzy zmienna typu obiekt 
+    [Header ("Projectile")]
     [SerializeField] GameObject laserPrefab;  
     [SerializeField] [Range(1, 50)] float projectileSpeed = 25f;
     [SerializeField] [Range(0, 10)] float projectileFiringPeriod = 0.7f;
@@ -80,6 +83,22 @@ public class Player : MonoBehaviour {
         GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
         yield return new WaitForSeconds(projectileFiringPeriod);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+        if (!damageDealer) { return; }
+        ProcessHit(damageDealer);
+    }
+
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        health -= damageDealer.GetDamage();
+        damageDealer.Hit();
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

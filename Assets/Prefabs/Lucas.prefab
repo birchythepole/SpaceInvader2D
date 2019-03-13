@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114520472040208468}
   - component: {fileID: 114263734959502066}
   - component: {fileID: 58125917271682778}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lucas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

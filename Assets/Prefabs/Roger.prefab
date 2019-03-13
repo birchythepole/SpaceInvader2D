@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114041150051047646}
   - component: {fileID: 114329140186406752}
   - component: {fileID: 58112970870673164}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Roger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
