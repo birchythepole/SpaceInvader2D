@@ -88,6 +88,9 @@ MonoBehaviour:
   projectileSpeed: 12
   deathVFX: {fileID: 1004935079070684, guid: ea0b891ec5cea29419d706f340b2c2c9, type: 2}
   durationOfExplosion: 1
+  deathSFX: {fileID: 8300000, guid: 5e75985f1dc3a0f45b83294fd97c8fa0, type: 3}
+  soundVolume: 0.7
+  laserSFX: {fileID: 8300000, guid: 8400251d156160e418b624dbf1b0f307, type: 3}
 --- !u!212 &212137413916221934
 SpriteRenderer:
   m_ObjectHideFlags: 1
