@@ -109,7 +109,10 @@ public class Player : MonoBehaviour {
             Die();
         }
     }
-
+    public int GetHealth()
+    {
+        return health;
+    }
     private void Die()
     {
         Destroy(gameObject);
