@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 114244980887626170}
   - component: {fileID: 114279100496772270}
   - component: {fileID: 58848721989372822}
+  - component: {fileID: 50626453653704932}
+  - component: {fileID: 114989894257050356}
   m_Layer: 9
   m_Name: Mathew
   m_TagString: Untagged
@@ -43,6 +45,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50626453653704932
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911000904280368}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &58848721989372822
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -52,7 +74,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -91,6 +113,18 @@ MonoBehaviour:
   deathSFX: {fileID: 8300000, guid: 5e75985f1dc3a0f45b83294fd97c8fa0, type: 3}
   soundVolume: 0.7
   laserSFX: {fileID: 8300000, guid: 8400251d156160e418b624dbf1b0f307, type: 3}
+--- !u!114 &114989894257050356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911000904280368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d39eca443079a047825974a596a19e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 500
 --- !u!212 &212361511337085104
 SpriteRenderer:
   m_ObjectHideFlags: 1

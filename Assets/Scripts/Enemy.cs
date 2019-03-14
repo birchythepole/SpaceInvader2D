@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour {
             Quaternion.identity
             ) as GameObject;
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
-        AudioSource.PlayClipAtPoint(laserSFX, transform.position, soundVolume);
+        AudioSource.PlayClipAtPoint(laserSFX, Camera.main.transform.position, soundVolume);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

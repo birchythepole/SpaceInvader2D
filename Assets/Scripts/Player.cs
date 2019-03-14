@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
     //Parametry konfiguracyjne
@@ -117,11 +116,7 @@ public class Player : MonoBehaviour {
         GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(explosion, durationOfExplosion);
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
-        Invoke('GameOver', 2f);
-    }
+        FindObjectOfType<Level>().LoadGameOver();
 
-    public void GameOver()
-    {
-        SceneManager.LoadScene("GameOver");
     }
 }
