@@ -822,6 +822,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 743464467}
   m_CullTransparentMesh: 0
+--- !u!1001 &748367302
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4473764964660276, guid: c197308babb384444bdcf5f878332606, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473764964660276, guid: c197308babb384444bdcf5f878332606, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473764964660276, guid: c197308babb384444bdcf5f878332606, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473764964660276, guid: c197308babb384444bdcf5f878332606, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473764964660276, guid: c197308babb384444bdcf5f878332606, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473764964660276, guid: c197308babb384444bdcf5f878332606, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473764964660276, guid: c197308babb384444bdcf5f878332606, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473764964660276, guid: c197308babb384444bdcf5f878332606, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c197308babb384444bdcf5f878332606, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1033003400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1807528366137544, guid: def5a1c9ee5cf654ea4b21f31edf2500,
@@ -838,6 +880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b800e45ac043a9c4a94ac284294e498d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayTimeForDeath: 2
 --- !u!1 &1037858665
 GameObject:
   m_ObjectHideFlags: 0
